@@ -1,12 +1,10 @@
 package puc;
 
 import com.codeborne.selenide.Configuration;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginPage;
 
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -17,17 +15,13 @@ public class PUC_FunctionalTest_Login {
 
     @Test
     public void testLogin() {
-        open(Configuration.baseUrl);
+        open("http://localhost:8080");
+       //open(Configuration.baseUrl);
+        LoginPage page = open("http://localhost:8080", LoginPage.class);
 
-        LoginPage page = open(Configuration.baseUrl, LoginPage.class);
 
-        $(By.id("j_username")).val("Admin");
-        $(By.id("j_password")).val("password");
-        $(byText("Login")).click();
-
-        // HomePage homePage = page.searchFor("selenide");
-        // homePage.getResult(0).shouldHave(text("Selenide: concise UI tests in Java"));
-
+        //LoginPage page = open(System.getProperty("baseUrl"), LoginPage.class);
+        HomePage home = page.login();
         close();
     }
 
