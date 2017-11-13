@@ -15,7 +15,7 @@ public class PUC_FunctionalTest_Login {
 
     @Test
     public void testLogin() {
-        open("http://localhost:8080");
+       // open("http://localhost:8080");
        //open(Configuration.baseUrl);
         LoginPage page = open("http://localhost:8080", LoginPage.class);
 
