@@ -1,4 +1,4 @@
-package stepdefinition;
+package steps;
 
 import com.codeborne.selenide.Configuration;
 import cucumber.api.java.en.Given;
@@ -8,9 +8,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 /**
  * Created by pshynin on 11/14/2017.

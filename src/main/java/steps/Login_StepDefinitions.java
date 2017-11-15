@@ -1,4 +1,4 @@
-package stepdefinition;
+package steps;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -6,13 +6,12 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 /**
  * Created by pshynin on 11/14/2017.
  */
-public class PUC_Login_StepDefinitions {
+public class Login_StepDefinitions {
     private String username;
     private String password;
 
@@ -25,8 +24,7 @@ public class PUC_Login_StepDefinitions {
     @Then("login with username (.*) and password (.*)")
     public void loginWithUsernameAdminAndPasswordPassword(String username, String password) {
         $(By.id("j_username")).val(username);
-        $(By.id("j_password")).val(password);
-        $(byText("PUC_Login_StepDefinitions")).click();
+        $(By.id("j_password")).val(password).pressEnter();
     }
 
     @Then("PUC opened")
