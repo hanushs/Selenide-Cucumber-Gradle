@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
  * Created by pshynin on 11/14/2017.
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "Feature", glue = {"stepDefinition"})
-public class Login {
+@CucumberOptions(features = "src/test/java/features/", glue = {"steps"})
+public class Test {
 }
