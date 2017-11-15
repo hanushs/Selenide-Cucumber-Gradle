@@ -1,32 +1,31 @@
-package stepdefinition;
+package steps;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
+import pages.HomePage;
+import pages.LoginPage;
 
 import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Configuration.baseUrl;
+import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.open;
 
 /**
  * Created by pshynin on 11/14/2017.
  */
-public class PUC_Login_StepDefinitions {
-    private String username;
-    private String password;
+public class Login {
+    private LoginPage loginPage;
+    private HomePage homePage;
 
     @When("open PUC")
     public void openPUC() {
-        //Configuration.browser = "chrome";
-        open("https://google.com/ncr");
+        LoginPage loginPage = open(baseUrl, LoginPage.class);
     }
 
     @Then("login with username (.*) and password (.*)")
     public void loginWithUsernameAdminAndPasswordPassword(String username, String password) {
-        $(By.id("j_username")).val(username);
-        $(By.id("j_password")).val(password);
-        $(byText("PUC_Login_StepDefinitions")).click();
+        HomePage homePage = loginPage.login();
     }
 
     @Then("PUC opened")
