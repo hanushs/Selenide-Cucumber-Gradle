@@ -13,8 +13,3 @@ Feature: Puc_SmokeTest
 
     | username    | password   | report type   | data source      | rows     | columns   | measures   |
     | Admin       | password   | Analysis      | SteelWheelsSales | Customer | Type      | Quality    |
-    | Admin       | password   | Analysis      | SteelWheelsSales | Customer | Type      | Quality    |
-
-
-    Scenario: login
-      Given o
