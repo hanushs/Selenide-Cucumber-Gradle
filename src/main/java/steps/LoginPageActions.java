@@ -6,6 +6,7 @@ import org.apache.commons.pool2.ObjectPool;
 import pages.HomePage;
 import pages.LoginPage;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.open;
 
 /**
@@ -20,7 +21,7 @@ public class LoginPageActions extends StepBase {
 
     @When("^open PUC$")
     public void openPUC() {
-        app.setLoginPage(open("http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/Login", LoginPage.class));
+        app.setLoginPage(open(baseUrl, LoginPage.class));
     }
 
 
