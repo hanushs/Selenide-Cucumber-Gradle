@@ -24,6 +24,7 @@ public class ApplicationManager {
         Configuration.baseUrl = "http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/";
         Configuration.timeout = 10000;
         Configuration.browser = "chrome";
+        Configuration.startMaximized = true;
     }
 
     public LoginPage getLoginPage() {
