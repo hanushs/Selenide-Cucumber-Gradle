@@ -24,7 +24,7 @@ public class HomePage {
     }
 
     public SelenideElement createNewAnalysisReportButton() {
-        return $(By.id("createNewanalyzerButton"));
+        return $(By.cssSelector(".popover-content > #createNewanalyzerButton"));
     }
 
     public HomePage() {
@@ -34,7 +34,6 @@ public class HomePage {
         switchTo().frame(homeFrame());
         createNewButton().click();
         if (reportType.contains("Analysis")) {
-            switchTo().activeElement();
             createNewAnalysisReportButton().click();
         }
     }
