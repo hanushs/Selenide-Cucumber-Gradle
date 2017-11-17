@@ -14,19 +14,19 @@ import static com.codeborne.selenide.Selenide.$;
  * Created by pshynin on 11/10/2017.
  */
 public class LoginPage {
-    public SelenideElement userNameField() {
+    private SelenideElement userNameField() {
         return $(By.id("j_username"));
     }
 
-    public SelenideElement passwordField() {
+    private SelenideElement passwordField() {
         return $(By.id("j_password"));
     }
 
-    public SelenideElement loginButton() {
+    private SelenideElement loginButton() {
         return $(By.xpath("//button[contains(., 'Login')]"));
     }
 
-    public SelenideElement home() {
+    private SelenideElement home() {
         return $(By.id("mantle-perspective-switcher"));
     }
 

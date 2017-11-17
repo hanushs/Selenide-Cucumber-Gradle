@@ -11,11 +11,11 @@ import static com.codeborne.selenide.Selenide.switchTo;
  */
 public class HomePage {
 
-    protected SelenideElement homeFrame() {
+    private SelenideElement homeFrame() {
         return $(By.id("home.perspective"));
     }
 
-    public SelenideElement createNewButton() {
+    private SelenideElement createNewButton() {
         return $(By.id("btnCreateNew"));
     }
 
@@ -23,7 +23,7 @@ public class HomePage {
         return $(By.id("btnCreateNew"));
     }
 
-    public SelenideElement createNewAnalysisReportButton() {
+    private SelenideElement createNewAnalysisReportButton() {
         return $(By.cssSelector(".popover-content > #createNewanalyzerButton"));
     }
 
