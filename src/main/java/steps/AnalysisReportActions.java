@@ -2,7 +2,7 @@ package steps;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
-import pages.AnalysisReportPage;
+import manager.StepBase;
 
 /**
  * Created by pshynin on 11/15/2017.

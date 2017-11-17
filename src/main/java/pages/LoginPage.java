@@ -1,5 +1,7 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.en.When;
 import manager.ApplicationManager;
@@ -24,6 +26,10 @@ public class LoginPage {
         return $(By.xpath("//button[contains(., 'Login')]"));
     }
 
+    public SelenideElement home() {
+        return $(By.id("mantle-perspective-switcher"));
+    }
+
     public LoginPage() {
     }
 
@@ -31,6 +37,8 @@ public class LoginPage {
         userNameField().val(username);
         passwordField().val(password);
         loginButton().click();
+
+        home().shouldHave(Condition.text("Home"));
         return new HomePage();
     }
 }

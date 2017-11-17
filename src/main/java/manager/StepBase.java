@@ -1,4 +1,4 @@
-package steps;
+package manager;
 
 import manager.ApplicationManager;
 
@@ -7,6 +7,6 @@ import manager.ApplicationManager;
  */
 public class StepBase {
 
-    public static final ApplicationManager app
+    protected static final ApplicationManager app
             = new ApplicationManager();
 }
