@@ -1,15 +1,10 @@
 
 TOOLS USED:
 Selenide: https://github.com/codeborne/selenide
-
 Cucumber: https://github.com/cucumber/cucumber
-
 Gradle: https://github.com/gradle/gradle
-
 jUnit: https://github.com/junit-team/junit5
-
 Jenkins: https://github.com/kohsuke/jenkins
-
 
 HOW TO RUN TEST:
 gradle build -x test --build without tests
@@ -21,6 +16,7 @@ gradle build -x test --build without tests
 3. Run a JUnit Test Suite:
 4. Run a single Feature:
 5. Run Gradle Task from from command line:
+        -Dselenide.timeout=6000
 6. Run Test on Jenkins:
 
 CONFIGURATIONS:
