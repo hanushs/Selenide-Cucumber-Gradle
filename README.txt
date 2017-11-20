@@ -1,15 +1,10 @@
 
 TOOLS USED:
 Selenide: https://github.com/codeborne/selenide
-
 Cucumber: https://github.com/cucumber/cucumber
-
 Gradle: https://github.com/gradle/gradle
-
-jUnit: https://github.com/junit-team/junit5
-
+TestNG: https://github.com/cbeust/testng
 Jenkins: https://github.com/kohsuke/jenkins
-
 
 HOW TO RUN TEST:
 gradle build -x test --build without tests
@@ -20,7 +15,7 @@ gradle build -x test --build without tests
 2. Run a Test Class:
         gradle -Dtest.single=ClassUnderTestTest test
 
-3. Run a JUnit Test Suite:
+3. Run a TestNG Test Suite:
 
 4. Run a single Feature:
 

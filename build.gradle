@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-
+   // compile 'org.testng:testng:6.11'
     compile 'info.cukes:cucumber-java:1.2.5'
     compile 'info.cukes:cucumber-junit:1.2.5'
     compile 'com.codeborne:selenide:4.5.1'
@@ -33,5 +33,9 @@ dependencies {
 }
 
 configurations {
+    agent
+}
+
+task test {
     agent
 }
