@@ -1,6 +1,5 @@
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import manager.StepBase;
 
@@ -16,6 +15,5 @@ public class AnalysisReportActions extends StepBase {
 
     @And("^add field (.*) to the (.*)$")
     public void addFieldToRow(String selected, String column) {
-        throw new PendingException();
     }
 }
