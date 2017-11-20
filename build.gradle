@@ -4,16 +4,16 @@
 
 apply plugin: 'java'
 
-defaultTasks 'clean', 'test'
+//defaultTasks 'setUp'
 
 sourceSets {
     main {
-        java {srcDir 'src'}
-        resources {srcDir 'src'}
+        java { srcDir 'src' }
+        resources { srcDir 'src' }
     }
     test {
-        java {srcDir 'test'}
-        resources {srcDir 'test'}
+        java { srcDir 'test' }
+        resources { srcDir 'test' }
     }
 }
 
@@ -22,16 +22,8 @@ repositories {
 }
 
 dependencies {
-
     compile 'info.cukes:cucumber-java:1.2.5'
     compile 'info.cukes:cucumber-junit:1.2.5'
     compile 'com.codeborne:selenide:4.5.1'
-    compile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
-    compile fileTree(dir: 'libs', include: '*.jar')
     compile 'org.apache.commons:commons-pool2:2.4.3'
-
-}
-
-configurations {
-    agent
 }
