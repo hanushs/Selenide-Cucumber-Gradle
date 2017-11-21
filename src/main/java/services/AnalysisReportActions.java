@@ -1,12 +1,12 @@
-package steps;
+package services;
 
 import cucumber.api.java.en.And;
-import manager.StepBase;
+import utills.TestBase;
 
 /**
  * Created by pshynin on 11/15/2017.
  */
-public class AnalysisReportActions extends StepBase {
+public class AnalysisReportActions extends TestBase {
 
     @And("^select (.*) Data Source$")
     public void selectDataSources(String dataSource) {
@@ -14,6 +14,7 @@ public class AnalysisReportActions extends StepBase {
     }
 
     @And("^add field (.*) to the (.*)$")
-    public void addFieldToRow(String selected, String column) {
+    public void addReportField(String from, String to) {
+        app.getAnalysisReportPage().addField(from, to);
     }
 }

@@ -1,15 +1,9 @@
-package manager;
+package utills;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import pages.AnalysisReportPage;
 import pages.HomePage;
 import pages.LoginPage;
-
-import java.io.File;
-import java.io.FileReader;
-import java.io.InputStream;
-import java.util.Properties;
 
 /**
  * Created by pshynin on 11/16/2017.
@@ -29,9 +23,9 @@ public class ApplicationManager {
         analysisReportPage = new AnalysisReportPage();
         Configuration.baseUrl = "http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/";
         Configuration.timeout = 10000;
-        Configuration.browser = "chrome";
-        Configuration.startMaximized = true;
-        Configuration.holdBrowserOpen = false;
+        Configuration.browser = "chrome"; //options: chrome, firefox
+        // Configuration.startMaximized = true;
+        //  Configuration.holdBrowserOpen = false;
     }
 
     public LoginPage getLoginPage() {

@@ -1,10 +1,10 @@
 package pages;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 /**
  * Created by pshynin on 11/15/2017.
@@ -12,11 +12,11 @@ import static com.codeborne.selenide.Selenide.*;
 public class AnalysisReportPage {
 
     private SelenideElement frame() {
-        return $(By.cssSelector("[name*=frame_]"));
+        return $(By.xpath("//iframe[@class='gwt-Frame'][@name='frame_0']"));
     }
 
-    private ElementsCollection dataSourcesList() {
-        return $$(By.cssSelector("#datasources > option"));
+    private SelenideElement dataSource(String source) {
+        return $(By.cssSelector("#datasources>option[title*=" + source + "]"));
     }
 
     private SelenideElement selectDataSourceOkButton() {
@@ -27,30 +27,24 @@ public class AnalysisReportPage {
         return $(By.id("btnCancel"));
     }
 
+    private SelenideElement reportTreeElement(String name) {
+        return $(By.cssSelector("[id*='dojoUnique'][title='" + name + "']"));
+    }
+
+    private SelenideElement reportLayout(String type) {
+        return $(By.cssSelector("#caption-text>gemPlaceholder.dojoDndSource.dojoDndTarget.dojoDndContainerOver>span"));
+    }
+
     public AnalysisReportPage() {
     }
 
-    public void selectDataSource(String dataSource) {
-        //frame().scrollTo().click();
-        //switchTo().innerFrame("frame");
-        makeClickable();
-        for (SelenideElement element : dataSourcesList()) {
-            if (element.getText().contains(dataSource)) {
-                element.scrollTo().doubleClick();
-            }
-        }
+    public void selectDataSource(String name) {
+        switchTo().defaultContent();
+        switchTo().frame(frame());
+        dataSource(name).doubleClick();
     }
 
-    public void makeClickable() {
-        // magic fix to make element clickable if div is on the front
-        try {
-            String css = "body > div[style*='display: block']";
-            ElementsCollection elements = $$(By.cssSelector(css));
-            if (!elements.isEmpty()) {
-                SelenideElement elem = elements.get(0);
-                elem.click();
-            }
-        } catch (Exception e) {
-        }
+    public void addField(String from, String to) {
+        reportTreeElement(from).dragAndDropTo(reportLayout(to));
     }
 }

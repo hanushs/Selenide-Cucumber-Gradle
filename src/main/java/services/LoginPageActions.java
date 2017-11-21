@@ -1,8 +1,8 @@
-package steps;
+package services;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import manager.StepBase;
+import utills.TestBase;
 import pages.LoginPage;
 
 import static com.codeborne.selenide.Configuration.baseUrl;
@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 /**
  * Created by pshynin on 11/14/2017.
  */
-public class LoginPageActions extends StepBase {
+public class LoginPageActions extends TestBase {
 
     @When("^open PUC$")
     public void openPUC() {

@@ -10,11 +10,5 @@ Feature: Puc_SmokeTest
     And add field <measures> to the Measures
 
     Examples:
-
     | username    | password   | report type   | data source      | rows     | columns   | measures   |
     | Admin       | password   | Analysis      | SteelWheelsSales | Customer | Type      | Quality    |
-
-
-
-    Scenario: login
-      Given open PUC

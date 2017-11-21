@@ -1,16 +1,16 @@
-package steps;
+package services;
 
 import cucumber.api.java.en.And;
-import manager.StepBase;
+import utills.TestBase;
 
 
 /**
  * Created by pshynin on 11/15/2017.
  */
-public class HomePageActions extends StepBase {
+public class HomePageActions extends TestBase {
 
    @And("^create new (.*) report$")
     public void createNewType(String type) {
-        app.getHomePage().createNewType(type);
+        app.getHomePage().createNew(type);
     }
 }

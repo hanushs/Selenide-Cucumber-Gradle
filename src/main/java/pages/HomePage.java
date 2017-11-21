@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 /**
@@ -24,14 +25,15 @@ public class HomePage {
     }
 
     private SelenideElement createNewAnalysisReportButton() {
-        return $(By.cssSelector(".popover-content > #createNewanalyzerButton"));
+        return $(By.cssSelector(".popover-content>#createNewanalyzerButton"));
     }
 
     public HomePage() {
     }
 
-    public void createNewType(String reportType) {
+    public void createNew(String reportType) {
         switchTo().frame(homeFrame());
+
         createNewButton().click();
         if (reportType.contains("Analysis")) {
             createNewAnalysisReportButton().click();
