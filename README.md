@@ -1,18 +1,18 @@
 ## Selenide-Cucumber-Gradle
 
-### TOOLS USED:
+### TOOLS USED:<br/>
 [Selenide](https://github.com/codeborne/selenide)<br/>
 [Cucumber](https://github.com/cucumber/cucumber)<br/>
 [Gradle](https://github.com/gradle/gradle)<br/>
 [JUnit](http://junit.org/junit5/docs/current/user-guide/)<br/>
 [Jenkins](https://github.com/kohsuke/jenkins)<br/>
 
-### HOW TO RUN TEST:
-https://docs.gradle.org/current/userguide/build_lifecycle.html
+### HOW TO RUN TEST:<br/>
+https://docs.gradle.org/current/userguide/build_lifecycle.html<br/>
 build without tests using gradle installation:<br/>
-`gradle build -x test`
+`gradle build -x test`<br/>
 build without tests using built-in gradle wrapper: <br/>
-`./gradlew build -x test`
+`./gradlew build -x test`<br/>
 
 * Run a single Test Method:<br/>
         - need to have init and teardown implementation (which browser to open, where to navigate, close browser after test)
@@ -28,17 +28,12 @@ build without tests using built-in gradle wrapper: <br/>
 
 * Run Test on Jenkins:<br/>
 
-
-
-##CONFIGURATIONS:
-
 ### CONFIGURATIONS:
-
-GRADLE:
-https://docs.gradle.org/4.3.1/userguide/tutorial_using_tasks.html
-build.gradle -- script in multi-project builds
-settings.gradle -- script will be executed in each build
-gradle.properties -- simple Java Properties
+GRADLE:<br/>
+https://docs.gradle.org/4.3.1/userguide/tutorial_using_tasks.html<br/>
+build.gradle -- script in multi-project builds<br/>
+settings.gradle -- script will be executed in each build<br/>
+gradle.properties -- simple Java Properties<br/>
 
 
 
