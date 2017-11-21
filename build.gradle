@@ -4,6 +4,7 @@
 
 apply plugin: 'java'
 
+
 defaultTasks 'clean', 'test'
 
 sourceSets {
@@ -33,12 +34,13 @@ dependencies {
 
 configurations {
     agent
+}
 
-    task pucTest {
-        systemProperties = [
-                'file.encoding'   : 'UTF-8',
-                'selenide.browser': 'chrome',
-                'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
-        ]
-    }
+test {
+    useTestNG()
+    systemProperties = [
+            'file.encoding'   : 'UTF-8',
+            'selenide.browser': 'chrome',
+            'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
+    ]
 }

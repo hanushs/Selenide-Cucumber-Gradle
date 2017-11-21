@@ -3,12 +3,14 @@ TOOLS USED:
 Selenide: https://github.com/codeborne/selenide
 Cucumber: https://github.com/cucumber/cucumber
 Gradle: https://github.com/gradle/gradle
-TestNG: https://github.com/cbeust/testng
+JUnit: http://junit.org/junit5/docs/current/user-guide/
 Jenkins: https://github.com/kohsuke/jenkins
 
 HOW TO RUN TEST:
 https://docs.gradle.org/current/userguide/build_lifecycle.html
-gradle build -x test --build without tests
+build without tests using gradle installation: `gradle build -x test`
+build without tests using built-in gradle wrapper: ``./gradlew build -x test`
+
 
 1. Run a single Test Method:
         - need to have init and teardown implementation (which browser to open, where to navigate, close browser after test)
