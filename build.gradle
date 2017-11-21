@@ -8,12 +8,12 @@ defaultTasks 'clean', 'test'
 
 sourceSets {
     main {
-        java {srcDir 'src'}
-        resources {srcDir 'src'}
+        java { srcDir 'src' }
+        resources { srcDir 'src' }
     }
     test {
-        java {srcDir 'test'}
-        resources {srcDir 'test'}
+        java { srcDir 'test' }
+        resources { srcDir 'test' }
     }
 }
 
@@ -33,8 +33,12 @@ dependencies {
 
 configurations {
     agent
-}
 
-task test {
-    agent
+    task pucTest {
+        systemProperties = [
+                'file.encoding'   : 'UTF-8',
+                'selenide.browser': 'chrome',
+                'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
+        ]
+    }
 }

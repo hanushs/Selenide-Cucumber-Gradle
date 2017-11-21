@@ -45,6 +45,8 @@ public class AnalysisReportPage {
     }
 
     public void addField(String from, String to) {
+        switchTo().defaultContent();
+        switchTo().frame(frame());
         reportTreeElement(from).dragAndDropTo(reportLayout(to));
     }
 }
