@@ -1,6 +1,8 @@
 ## Selenide-Cucumber-Gradle
+-----------------------------------
 
-## TOOLS USED:<br/>
+### TOOLS USED:<br/>
+===================================
 [Selenide](https://github.com/codeborne/selenide)<br/>
 [Cucumber](https://github.com/cucumber/cucumber)<br/>
 [Gradle](https://github.com/gradle/gradle)<br/>
@@ -8,6 +10,7 @@
 [Jenkins](https://github.com/kohsuke/jenkins)<br/>
 
 ### HOW TO RUN TEST:<br/>
+===================================
 Check [Userguide](https://docs.gradle.org/current/userguide/userguide.html) first<br/>
 build without tests using gradle installation: `gradle build -x test`<br/>
 build without tests using built-in gradle wrapper: `./gradlew build -x test`<br/>
@@ -21,6 +24,7 @@ build without tests using built-in gradle wrapper: `./gradlew build -x test`<br/
 * Run Test on Jenkins:<br/>
 
 ### CONFIGURATIONS:
+===================================
 GRADLE:<br/>
 https://docs.gradle.org/4.3.1/userguide/tutorial_using_tasks.html<br/>
 build.gradle -- script in multi-project builds<br/>
