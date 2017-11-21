@@ -2,7 +2,7 @@
 -----------------------------------
 
 ### TOOLS USED:<br/>
-===================================
+-----------------------------------
 [Selenide](https://github.com/codeborne/selenide)<br/>
 [Cucumber](https://github.com/cucumber/cucumber)<br/>
 [Gradle](https://github.com/gradle/gradle)<br/>
