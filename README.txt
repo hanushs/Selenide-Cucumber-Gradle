@@ -7,6 +7,7 @@ jUnit: https://github.com/junit-team/junit5
 Jenkins: https://github.com/kohsuke/jenkins
 
 HOW TO RUN TEST:
+https://docs.gradle.org/current/userguide/build_lifecycle.html
 gradle build -x test --build without tests
 
 1. Run a single Test Method:

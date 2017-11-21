@@ -1,12 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import cucumber.api.java.en.When;
-import manager.ApplicationManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.PageFactory;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -37,7 +33,6 @@ public class LoginPage {
         userNameField().val(username);
         passwordField().val(password);
         loginButton().click();
-
         home().shouldHave(Condition.text("Home"));
         return new HomePage();
     }

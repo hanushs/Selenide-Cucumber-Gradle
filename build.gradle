@@ -4,8 +4,6 @@
 
 apply plugin: 'java'
 
-//defaultTasks 'setUp'
-
 sourceSets {
     main {
         java { srcDir 'src' }
@@ -26,4 +24,12 @@ dependencies {
     compile 'info.cukes:cucumber-junit:1.2.5'
     compile 'com.codeborne:selenide:4.5.1'
     compile 'org.apache.commons:commons-pool2:2.4.3'
+}
+
+task pucTest {
+    systemProperties = [
+            'file.encoding'   : 'UTF-8',
+            'selenide.browser': 'chrome',
+            'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
+    ]
 }
