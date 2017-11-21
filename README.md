@@ -1,11 +1,11 @@
 # Selenide-Cucumber-Gradle
 
 ## TOOLS USED:
-Selenide: https://github.com/codeborne/selenide
-Cucumber: https://github.com/cucumber/cucumber
-Gradle: https://github.com/gradle/gradle
-JUnit: http://junit.org/junit5/docs/current/user-guide/
-Jenkins: https://github.com/kohsuke/jenkins
+** Selenide: https://github.com/codeborne/selenide<br/>
+** Cucumber: https://github.com/cucumber/cucumber<br/>
+** Gradle: https://github.com/gradle/gradle<br/>
+** JUnit: http://junit.org/junit5/docs/current/user-guide/<br/>
+** Jenkins: https://github.com/kohsuke/jenkins<br/>
 
 ## HOW TO RUN TEST:
 https://docs.gradle.org/current/userguide/build_lifecycle.html
