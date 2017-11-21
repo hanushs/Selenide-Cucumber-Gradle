@@ -21,11 +21,6 @@ public class ApplicationManager {
         loginPage = new LoginPage();
         homePage = new HomePage();
         analysisReportPage = new AnalysisReportPage();
-        Configuration.baseUrl = "http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/";
-        Configuration.timeout = 10000;
-        Configuration.browser = "chrome";
-//        Configuration.startMaximized = true;
-//        Configuration.holdBrowserOpen = false;
     }
 
     public LoginPage getLoginPage() {
