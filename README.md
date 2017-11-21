@@ -1,13 +1,13 @@
-#Selenide-Cucumber-Gradle
+# Selenide-Cucumber-Gradle
 
-##TOOLS USED:
+## TOOLS USED:
 Selenide: https://github.com/codeborne/selenide
 Cucumber: https://github.com/cucumber/cucumber
 Gradle: https://github.com/gradle/gradle
 JUnit: http://junit.org/junit5/docs/current/user-guide/
 Jenkins: https://github.com/kohsuke/jenkins
 
-##HOW TO RUN TEST:
+## HOW TO RUN TEST:
 https://docs.gradle.org/current/userguide/build_lifecycle.html
 build without tests using gradle installation: ```sh gradle build -x test```
 build without tests using built-in gradle wrapper: ```sh ./gradlew build -x test```
@@ -16,7 +16,8 @@ build without tests using built-in gradle wrapper: ```sh ./gradlew build -x test
 * Run a single Test Method:
         - need to have init and teardown implementation (which browser to open, where to navigate, close browser after test)
 
-* Run a Test Class:
+* Run a Test Class: <br/>
+	`gradle -Dtest.single=ClassUnderTestTest test`
 ```sh
 gradle -Dtest.single=ClassUnderTestTest test
 ```
