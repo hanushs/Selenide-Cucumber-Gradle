@@ -33,4 +33,12 @@ dependencies {
 
 configurations {
     agent
+
+    task pucTest {
+        systemProperties = [
+                'file.encoding'   : 'UTF-8',
+                'selenide.browser': 'chrome',
+                'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
+        ]
+    }
 }
