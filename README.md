@@ -9,16 +9,13 @@
 
 ### HOW TO RUN TEST:<br/>
 https://docs.gradle.org/current/userguide/build_lifecycle.html<br/>
-build without tests using gradle installation:<br/>
-`gradle build -x test`<br/>
-build without tests using built-in gradle wrapper: <br/>
-`./gradlew build -x test`<br/>
+build without tests using gradle installation: `gradle build -x test`<br/>
+build without tests using built-in gradle wrapper: `./gradlew build -x test`<br/>
 
 * Run a single Test Method:<br/>
         - need to have init and teardown implementation (which browser to open, where to navigate, close browser after test)
 
-* Run a Test Class: <br/>
-	`gradle -Dtest.single=ClassUnderTestTest test`
+* Run a Test Class: `gradle -Dtest.single=ClassUnderTestTest test`<br/>
 
 * Run a TestNG Test Suite:<br/>
 
