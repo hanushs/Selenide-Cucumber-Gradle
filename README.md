@@ -11,13 +11,24 @@ Check [Userguide](https://docs.gradle.org/current/userguide/userguide.html) firs
 build without tests using gradle installation: `gradle build -x test`<br/>
 build without tests using built-in gradle wrapper: `./gradlew build -x test`<br/>
 
-* Run a single Test Method:<br/>
-        - need to have init and teardown implementation (which browser to open, where to navigate, close browser after test)
-* Run a Test Class: `gradle -Dtest.single=ClassUnderTestTest test`<br/>
-* Run a TestNG Test Suite:<br/>
-* Run a single Feature:<br/>
+* Run single Test Method:<br/>
+* Run Test Class: `gradle -Dtest.single=ClassUnderTestTest test`<br/>
+* Run JUnit Test Suite:<br/>
+    - Create java class 
+    - add annotation: @RunWith(Suite.class)
+    - add annotation: @SuiteClasses(class1.class2…..) or @Suite.SuiteClasses ({test1.class, test2.class……})
+* Run Feature:<br/>
+    - Create java class 
+    - add annotation: @RunWith(Cucumber.class)
+    - add annotation: @CucumberOptions()
+    - specify options: features = "path-to-feature" (or folder with features)
+    - add any additional options if required
 * Run Gradle Task from from command line:<br/>
+    - create new gradle task:
+    - execute:
 * Run Test on Jenkins:<br/>
+    - create new job (same parameters as gradle task)
+    - execute:
 
 ## Configurations:
 GRADLE:<br/>
