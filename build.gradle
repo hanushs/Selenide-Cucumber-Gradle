@@ -2,7 +2,19 @@
  * user guide available at https://docs.gradle.org/4.3.1/userguide/tutorial_java_projects.html
  */
 
+// plugins:
 apply plugin: 'java'
+
+//dependencies
+dependencies {
+    compile 'org.testng:testng:6.11'
+    compile 'info.cukes:cucumber-java:1.2.5'
+    compile 'info.cukes:cucumber-junit:1.2.5'
+    compile 'com.codeborne:selenide:4.5.1'
+    compile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile 'org.apache.commons:commons-pool2:2.4.3'
+}
 
 
 defaultTasks 'clean', 'test'
@@ -22,15 +34,7 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile 'org.testng:testng:6.11'
-    compile 'info.cukes:cucumber-java:1.2.5'
-    compile 'info.cukes:cucumber-junit:1.2.5'
-    compile 'com.codeborne:selenide:4.5.1'
-    compile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
-    compile fileTree(dir: 'libs', include: '*.jar')
-    compile 'org.apache.commons:commons-pool2:2.4.3'
-}
+
 
 configurations {
     agent
@@ -43,4 +47,14 @@ test {
             'selenide.browser': 'chrome',
             'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
     ]
+}
+
+task execute(type:JavaExec) {
+    runner = className
+    classpath = sourceSets.runner.runtimeClasspath
+}
+
+task execute(type:JavaExec) {
+    main = mainClass
+    classpath = sourceSets.main.runtimeClasspath
 }
