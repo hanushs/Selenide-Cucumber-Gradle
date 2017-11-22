@@ -3,6 +3,8 @@
  */
 apply plugin: 'java'
 
+defaultTasks 'clean', 'test'
+
 sourceSets {
     test.java.srcDir "src/test"
 }
@@ -20,8 +22,6 @@ dependencies {
     testCompile fileTree(dir: 'libs', include: '*.jar')
     testCompile 'org.apache.commons:commons-pool2:2.4.3'
 }
-
-defaultTasks 'clean'
 
 configurations {
     cucumberRuntime {
@@ -47,12 +47,21 @@ task cucumber2 {
     }
 }
 
+test {
+    useTestNG()
+    systemProperties = [
+            'file.encoding'   : 'UTF-8',
+            'selenide.browser': 'chrome',
+            'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
+    ]
+}
 
-//test {
-//    useTestNG()
-//    systemProperties = [
-//            'file.encoding'   : 'UTF-8',
-//            'selenide.browser': 'chrome',
-//            'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
-//    ]
-//}
+task execute(type:JavaExec) {
+    runner = className
+    classpath = sourceSets.runner.runtimeClasspath
+}
+
+task execute(type:JavaExec) {
+    main = mainClass
+    classpath = sourceSets.main.runtimeClasspath
+}
