@@ -4,7 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 /**
@@ -33,7 +32,6 @@ public class HomePage {
 
     public void createNew(String reportType) {
         switchTo().frame(homeFrame());
-
         createNewButton().click();
         if (reportType.contains("Analysis")) {
             createNewAnalysisReportButton().click();
