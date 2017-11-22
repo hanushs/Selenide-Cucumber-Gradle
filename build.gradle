@@ -1,43 +1,50 @@
 /*
  * user guide available at https://docs.gradle.org/4.3.1/userguide/tutorial_java_projects.html
  */
-
-// plugins:
 apply plugin: 'java'
-
-//dependencies
-dependencies {
-    compile 'org.testng:testng:6.11'
-    compile 'info.cukes:cucumber-java:1.2.5'
-    compile 'info.cukes:cucumber-junit:1.2.5'
-    compile 'com.codeborne:selenide:4.5.1'
-    compile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
-    compile fileTree(dir: 'libs', include: '*.jar')
-    compile 'org.apache.commons:commons-pool2:2.4.3'
-}
-
 
 defaultTasks 'clean', 'test'
 
 sourceSets {
-    main {
-        java { srcDir 'src' }
-        resources { srcDir 'src' }
-    }
-    test {
-        java { srcDir 'test' }
-        resources { srcDir 'test' }
-    }
+    test.java.srcDir "src/test"
 }
 
 repositories {
     mavenCentral()
 }
 
-
+dependencies {
+    compile 'org.junit:junit5-engine:5.0.0-ALPHA'
+    testCompile 'info.cukes:cucumber-java:1.2.5'
+    testCompile 'info.cukes:cucumber-junit:1.2.5'
+    testCompile 'com.codeborne:selenide:4.5.1'
+    testCompile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
+    testCompile fileTree(dir: 'libs', include: '*.jar')
+    testCompile 'org.apache.commons:commons-pool2:2.4.3'
+}
 
 configurations {
-    agent
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+task cucumber1 {
+    dependsOn assemble
+    doLast {
+        main = "cucumber.api.cli.Main"
+        classpath = configurations.cucumberRuntime + sourceSets.test.output
+        args = ['--plugin', 'pretty', '--glue', 'features', 'src/test/java']
+    }
+}
+
+task cucumber2 {
+    dependsOn assemble, compileTestJava
+    doLast {
+        main = "cucumber.api.cli.Main"
+        classpath = configurations.cucumberRuntime + sourceSets.test.output
+        args = ['-f', 'pretty', '--glue', 'features', 'src/test/java']
+    }
 }
 
 test {

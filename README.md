@@ -11,18 +11,21 @@ Check [Userguide](https://docs.gradle.org/current/userguide/userguide.html) firs
 build without tests using gradle installation: `gradle build -x test`<br/>
 build without tests using built-in gradle wrapper: `./gradlew build -x test`<br/>
 
-* Run single Test Method:<br/>
-* Run Test Class: `gradle -Dtest.single=ClassUnderTestTest test`<br/>
-* Run JUnit Test Suite:<br/>
-    - Create java class 
-    - add annotation: @RunWith(Suite.class)
-    - add annotation: @SuiteClasses(class1.class2…..) or @Suite.SuiteClasses ({test1.class, test2.class……})
-* Run Feature:<br/>
-    - Create java class 
+NOTE: from IDE execution available in standard way as well as debug mode<br/>
+
+* Run Cucumber Feature (steps implemented):<br/>
+    - create java class 
     - add annotation: @RunWith(Cucumber.class)
     - add annotation: @CucumberOptions()
     - specify options: features = "path-to-feature" (or folder with features)
     - add any additional options if required
+* Run single Test Method:<br/>
+* Run Test Class: `gradle -Dtest.single=ClassUnderTestTest test`<br/>
+* Run JUnit Test Suite:<br/>
+    - create java class 
+    - add annotation: @RunWith(Suite.class)
+    - add annotation: @SuiteClasses(class1.class2…..) or @Suite.SuiteClasses ({test1.class, test2.class……})
+
 * Run Gradle Task from from command line:<br/>
     - create new gradle task:
     - execute:
