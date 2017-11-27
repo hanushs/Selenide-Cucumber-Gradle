@@ -34,11 +34,16 @@ NOTE: from IDE execution available in standard way as well as debug mode<br/>
     - execute:
 
 ## Configurations:
-GRADLE:<br/>
-https://docs.gradle.org/4.3.1/userguide/tutorial_using_tasks.html<br/>
-build.gradle -- script in multi-project builds<br/>
-settings.gradle -- script will be executed in each build<br/>
-gradle.properties -- simple Java Properties<br/>
+* Browsers:
+    - Chrome: 62.0.3202.94
+    - Firefox: 57.0 (64-bit)
+* Selenium:
+    - 3.17.1
+* Drivers:
+    - ChromeDriver: 2.33.506120 
+    - geckodriver 0.19.1
+
+
 
 
 
