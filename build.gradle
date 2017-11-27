@@ -3,7 +3,7 @@
  */
 apply plugin: 'java'
 
-defaultTasks 'clean', 'test'
+defaultTasks 'clean', 'setProperties'
 
 sourceSets {
     test.java.srcDir "src/test"
@@ -17,7 +17,7 @@ dependencies {
     compile 'org.junit:junit5-engine:5.0.0-ALPHA'
     testCompile 'info.cukes:cucumber-java:1.2.5'
     testCompile 'info.cukes:cucumber-junit:1.2.5'
-    testCompile 'com.codeborne:selenide:4.5.1'
+    testCompile 'com.codeborne:selenide:4.8'
     testCompile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
     testCompile fileTree(dir: 'libs', include: '*.jar')
     testCompile 'org.apache.commons:commons-pool2:2.4.3'
@@ -26,6 +26,16 @@ dependencies {
 configurations {
     cucumberRuntime {
         extendsFrom testRuntime
+    }
+}
+
+task setProperties {
+    doFirst {
+        systemProperties = [
+                'file.encoding'   : 'UTF-8',
+                'selenide.browser': 'chrome',
+                'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
+        ]
     }
 }
 
@@ -45,23 +55,4 @@ task cucumber2 {
         classpath = configurations.cucumberRuntime + sourceSets.test.output
         args = ['-f', 'pretty', '--glue', 'features', 'src/test/java']
     }
-}
-
-test {
-    useTestNG()
-    systemProperties = [
-            'file.encoding'   : 'UTF-8',
-            'selenide.browser': 'chrome',
-            'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
-    ]
-}
-
-task execute(type:JavaExec) {
-    runner = className
-    classpath = sourceSets.runner.runtimeClasspath
-}
-
-task execute(type:JavaExec) {
-    main = mainClass
-    classpath = sourceSets.main.runtimeClasspath
 }

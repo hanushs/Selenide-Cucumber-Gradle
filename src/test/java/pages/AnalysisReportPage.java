@@ -1,7 +1,11 @@
 package pages;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.SelenideTargetLocator;
 import org.openqa.selenium.By;
+
+import java.text.CollationElementIterator;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
@@ -47,6 +51,9 @@ public class AnalysisReportPage {
     public void addField(String from, String to) {
         switchTo().defaultContent();
         switchTo().frame(frame());
-        reportTreeElement(from).dragAndDropTo(reportLayout(to));
+     //   reportTreeElement(from).dragAndDropTo(reportLayout(to));
+
+     //  Selenide.switchTo().activeElement().findElement().clear();
+      // Selenide.switchTo().
     }
 }
