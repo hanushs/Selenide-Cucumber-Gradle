@@ -3,7 +3,7 @@
  */
 apply plugin: 'java'
 
-defaultTasks 'clean', 'setProperties'
+defaultTasks 'clean'//, 'setProperties'
 
 sourceSets {
     test.java.srcDir "src/test"
@@ -29,7 +29,7 @@ configurations {
     }
 }
 
-task setProperties {
+/*task setProperties {
     doFirst {
         systemProperties = [
                 'file.encoding'   : 'UTF-8',
@@ -37,7 +37,7 @@ task setProperties {
                 'BUILD_URL'       : System.getenv()['http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/'],
         ]
     }
-}
+}*/
 
 task cucumber1 {
     dependsOn assemble
