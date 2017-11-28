@@ -14,13 +14,15 @@ repositories {
 }
 
 dependencies {
+    compile 'com.codeborne:selenide:4.8'
     compile 'org.junit:junit5-engine:5.0.0-ALPHA'
+    compile 'org.apache.commons:commons-pool2:2.4.3'
+    compile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
+
     testCompile 'info.cukes:cucumber-java:1.2.5'
     testCompile 'info.cukes:cucumber-junit:1.2.5'
-    testCompile 'com.codeborne:selenide:4.8'
-    testCompile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
     testCompile fileTree(dir: 'libs', include: '*.jar')
-    testCompile 'org.apache.commons:commons-pool2:2.4.3'
+
 }
 
 configurations {

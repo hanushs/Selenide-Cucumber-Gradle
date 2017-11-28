@@ -32,7 +32,7 @@ public class HomePage {
 
     public void createNew(String reportType) {
         switchTo().frame(homeFrame());
-        createNewButton().click();
+        createNewButton().scrollTo().click();
         if (reportType.contains("Analysis")) {
             createNewAnalysisReportButton().click();
         }
