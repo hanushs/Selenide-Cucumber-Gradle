@@ -1,32 +1,36 @@
 package utills;
 
-import com.codeborne.selenide.Configuration;
 import pages.AnalysisReportPage;
 import pages.HomePage;
 import pages.LoginPage;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Created by pshynin on 11/16/2017.
  */
 public class ApplicationManager {
+    private final Properties properties;
     private LoginPage loginPage;
     private HomePage homePage;
     private AnalysisReportPage analysisReportPage;
 
     ApplicationManager() {
+        properties = new Properties();
         init();
     }
 
     private void init() {
-        Configuration.baseUrl = "http://svqxqacn7platforma2.pentahoqa.com:8080/pentaho/";
-        Configuration.timeout = 10000;
-        Configuration.browser = "gecko"; //options: chrome, firefox(gecko, marionette), edge,
+        String target = System.getProperty("target", "gradle");
 
-        Configuration.startMaximized = true;
-        Configuration.holdBrowserOpen = true;
-        Configuration.headless = false;
-
-        Configuration.clickViaJs = true;
+        try {
+            properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         loginPage = new LoginPage();
         homePage = new HomePage();
