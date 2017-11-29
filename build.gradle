@@ -79,6 +79,7 @@ VERY ANNOYING BUG
 }*/
 
 test {
+    dependsOn assemble, compileTestJava
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
 }
