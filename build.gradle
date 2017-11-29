@@ -3,7 +3,7 @@
  */
 apply plugin: 'java'
 
-defaultTasks 'clean'
+defaultTasks 'clean', 'compile'
 
 sourceSets {
     test.java.srcDir "src/test"
@@ -13,17 +13,16 @@ repositories {
     mavenCentral()
 }
 
-/*
+//Ensure that the cucumberRuntime contains required dependencies
 configurations {
     cucumberRuntime {
+        extendsFrom testCompile
         extendsFrom testRuntime
     }
 }
-*/
 
 //Ensure the cucumber tests are executed as part of the build. Makes for a very pretty output.
 //build.dependsOn cucumber
-
 dependencies {
     compile 'com.codeborne:selenide:4.8'
     compile 'org.junit:junit5-engine:5.0.0-ALPHA'
@@ -41,33 +40,56 @@ VERY ANNOYING BUG
 
     compile 'info.cukes:cucumber-java:1.2.5'
     compile 'info.cukes:cucumber-junit:1.2.5'
-   // testCompile fileTree(dir: 'libs', include: '*.jar')
+    // testCompile fileTree(dir: 'libs', include: '*.jar')
 
 }
 
-/*task pucTest(type: test) {
+/*test {
+    // set a system property for the test JVM(s)
+    //systemProperty 'some.prop', 'value'
 
-}
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging.showStandardStreams = true
 
-task testCucumber(type: JavaExec, dependsOn: [testClasses]) {
+    // set JVM arguments for the test JVM(s)
+    jvmArgs '-XX:MaxPermSize=256m'
+
+    // listen to events in the test execution lifecycle
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: " + descriptor)
+    }
+
+    // listen to standard out and standard error of the test JVM(s)
+    onOutput { descriptor, event ->
+        logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message)
+    }
+}*/
+
+/*task testCucumber(type: JavaExec, dependsOn: [testClasses]) {
     description = 'Runs all feature files with Cucumber'
     ext.outputDir = file("$buildDir/target/reports")
 
     classpath = sourceSets.test.runtimeClasspath
     main = 'cucumber.api.cli.Main'
-    args    '--format', 'pretty',
+    args '--format', 'pretty',
             '--format', 'html:target/cucumber',
             '--glue', 'foo.bar.fum.cucumber',   // foo.bar.fum.cucumber is the package for Steps, Hooks etc.
             '--strict',
             sourceSets.test.output.resourcesDir // Find feature files stored in src/test/resources
 }*/
 
-/*task cucumber() {
-    dependsOn assemble
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+/*task cucumber {
+    // dependsOn assemble compileTestJava
     doLast {
         javaexec {
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime
+            //environment(-DCucumber.Options="--name=MyFeature"' )
             args = ['--plugin', 'pretty', '--glue', 'src/main/java/services', 'src/test/java/features']
 
         }
@@ -80,7 +102,7 @@ task executeFeatures(type: Test) {
     //useTestNG()
     options {
         //useDefaultListeners = false
-//        listeners << ''
+        listeners << ''
         jvmArgs = ['-Dcucumber.options= ' +
                            '--glue org.company.app ' +
                            '--plugin pretty ' +
