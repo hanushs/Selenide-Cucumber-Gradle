@@ -1,5 +1,8 @@
 package utills;
 
+import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.AnalysisReportPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -22,6 +25,8 @@ public class ApplicationManager {
     private void init() {
         ResourceBundle rb = ResourceBundle.getBundle("local");
         Enumeration<String> keys = rb.getKeys();
+        //DesiredCapabilities.firefox().setCapability("nativeEvents", true);
+
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             String value = rb.getString(key);

@@ -1,15 +1,21 @@
 # Selenide-Cucumber-Gradle
 
 ## Tools used:
-[Selenide](https://github.com/codeborne/selenide)<br/>
-[Cucumber](https://github.com/cucumber/cucumber)<br/>
-[Gradle](https://github.com/gradle/gradle)<br/>
-[JUnit](https://github.com/junit-team/junit5)<br/>
+[Selenide](https://github.com/codeborne/selenide)\
+[Cucumber](https://github.com/cucumber/cucumber)\
+[Gradle](https://github.com/gradle/gradle)\
+[JUnit](https://github.com/junit-team/junit5)\
+
+## How to write test:
+* Selenide instatiates pages automatically, all you need is to add:\
+`import static com.codeborne.selenide.Selenide.*;`\
+`import static com.codeborne.selenide.Condition.*;`
+* 
 
 ## How to run test:
 Check [Userguide](https://docs.gradle.org/current/userguide/userguide.html) first<br/>
-build without tests using gradle installation: `gradle build -x test`<br/>
-build without tests using built-in gradle wrapper: `./gradlew build -x test`<br/>
+build without suites using gradle installation: `gradle build -x test`<br/>
+build without suites using built-in gradle wrapper: `./gradlew build -x test`<br/>
 
 NOTE: from IDE execution available in standard way as well as debug mode<br/>
 

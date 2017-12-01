@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.wrapper.Wrapper
+
 /*
  * user guide available at https://docs.gradle.org/4.3.1/userguide/tutorial_java_projects.html
  */
@@ -13,7 +15,6 @@ repositories {
     mavenCentral()
 }
 
-//Ensure that the cucumberRuntime contains required dependencies
 configurations {
     cucumberRuntime {
         extendsFrom testCompile
@@ -21,27 +22,31 @@ configurations {
     }
 }
 
-//Ensure the cucumber tests are executed as part of the build. Makes for a very pretty output.
-//build.dependsOn cucumber
 dependencies {
     compile 'com.codeborne:selenide:4.8'
     compile 'org.junit:junit5-engine:5.0.0-ALPHA'
     compile 'org.apache.commons:commons-pool2:2.4.3'
     compile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
-
-    /*
-In order to work around a really flagrant bug ( http://issues.gradle.org/browse/GRADLE-732 )
-You have to create a configuration that includes the jar.archivePath (the jar.archivePath is created by the java plugin)
-and give it the same name as the cucumberRuntime configuration, or name it something different and have the cucumberRuntime
-configuration extend from it as well.
-Still a bug in gradle 2.4, despite their saying that they would fix it before 1.0
-VERY ANNOYING BUG
-*/ ///cucumberRuntime files("${jar.archivePath}")
-
     compile 'info.cukes:cucumber-java:1.2.5'
     compile 'info.cukes:cucumber-junit:1.2.5'
-    // testCompile fileTree(dir: 'libs', include: '*.jar')
+    testCompile fileTree(dir: 'libs', include: '*.jar')
 
+}
+/*
+test {
+    dependsOn assemble, compileTestJava
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}*/
+
+test {
+    testLogging.showStandardStreams = true
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4.1'
+    jarFile = './gradle/wrapper/gradle-wrapper.jar'
+    scriptFile = './gradle'
 }
 
 /*test {
@@ -78,12 +83,6 @@ VERY ANNOYING BUG
             sourceSets.test.output.resourcesDir // Find feature files stored in src/test/resources
 }*/
 
-test {
-    dependsOn assemble, compileTestJava
-    testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
-}
-
 /*task cucumber {
     // dependsOn assemble compileTestJava
     doLast {
@@ -91,7 +90,7 @@ test {
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime
             //environment(-DCucumber.Options="--name=MyFeature"' )
-            args = ['--plugin', 'pretty', '--glue', 'src/main/java/services', 'src/test/java/features']
+            args = ['--plugin', 'pretty', '--glue', 'src/main/java/steps', 'src/test/java/features']
 
         }
     }

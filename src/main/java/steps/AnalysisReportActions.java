@@ -1,4 +1,4 @@
-package services;
+package steps;
 
 import cucumber.api.java.en.And;
 import utills.TestBase;

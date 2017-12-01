@@ -1,13 +1,32 @@
 package tests;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-import org.junit.runner.RunWith;
+import org.junit.Test;
+import pages.HomePage;
+import pages.LoginPage;
+
+import static com.codeborne.selenide.Configuration.baseUrl;
+import static com.codeborne.selenide.Selenide.*;
 
 /**
- * Created by pshynin on 11/14/2017.
+ * Created by pshynin on 12/1/2017.
  */
-@RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/", plugin = {"pretty", "html:build/cucumber-report"}, glue = {"services"})
 public class PUC_SmokeTest {
+
+
+    @Test
+    public void loginTest() {
+        LoginPage page = open(baseUrl, LoginPage.class);
+        HomePage home = page.login("Admin", "password");
+        home.createNew("Analysis report");
+    }
+
+    @Test
+    public void homePerspectiveTest() {
+
+    }
+
+    @Test
+    public void createNewAnalysisReportTest() {
+
+    }
 }
