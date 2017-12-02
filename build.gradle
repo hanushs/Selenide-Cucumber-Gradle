@@ -1,11 +1,7 @@
-import org.gradle.api.tasks.wrapper.Wrapper
-
 /*
  * user guide available at https://docs.gradle.org/4.3.1/userguide/tutorial_java_projects.html
  */
 apply plugin: 'java'
-
-defaultTasks 'clean', 'compile'
 
 sourceSets {
     test.java.srcDir "src/test"
@@ -29,17 +25,24 @@ dependencies {
     compile 'org.apache.maven.plugins:maven-surefire-report-plugin:2.20.1'
     compile 'info.cukes:cucumber-java:1.2.5'
     compile 'info.cukes:cucumber-junit:1.2.5'
+    compile 'com.google.guava:guava:23.5-jre'
     testCompile fileTree(dir: 'libs', include: '*.jar')
 
 }
-/*
-test {
+
+/*test {
     dependsOn assemble, compileTestJava
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
 }*/
 
+//ext.greeting = project.hasProperty('selenide.browser') ? project.getProperty('selenide.browser') : '${selenide.browser}'
+
 test {
+/*    systemProperties = [
+            'selenide.browser': System.getProperty("selenide.browser"),
+            'selenide.baseUrl': System.getProperty("selenide.baseUrl"),
+    ]*/
     testLogging.showStandardStreams = true
 }
 
@@ -47,6 +50,16 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.4.1'
     jarFile = './gradle/wrapper/gradle-wrapper.jar'
     scriptFile = './gradle'
+}
+
+task runFeature ( type: Test, dependsOn: test) {
+    include '**/*PUC_Feature_Suite.class'
+    exclude '**/*PUC_Test_Suite.class'
+}
+
+
+task runTest(type: Test, dependsOn: testClasses) {
+    include '**/*PUC_Test_Suite.class'
 }
 
 /*test {

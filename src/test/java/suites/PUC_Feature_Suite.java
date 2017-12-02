@@ -9,5 +9,5 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/java/", plugin = {"pretty", "html:build/cucumber-report"}, glue = {"steps"})
-public class PUC_Feature_Runner {
+public class PUC_Feature_Suite {
 }

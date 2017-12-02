@@ -3,6 +3,7 @@ package tests;
 import org.junit.Test;
 import pages.HomePage;
 import pages.LoginPage;
+import utills.TestBase;
 
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 /**
  * Created by pshynin on 12/1/2017.
  */
-public class PUC_SmokeTest {
+public class PUC_SmokeTest extends TestBase {
 
 
     @Test
