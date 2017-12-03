@@ -51,9 +51,9 @@ public class PUC_SmokeTest {
         LoginPage page = open(baseUrl, LoginPage.class);
         HomePage home = page.login("Admin", "password");
         DataSourcePage dataSource = home.createNew("Analysis report");
-        AnalysisReportPage report = dataSource.selectDataSource("Steel Wheels");
-        report.addField("", "Rows");
-        report.addField("", "Columns");
-        report.addField("", "Measures");
+      //  AnalysisReportPage report = dataSource.selectDataSource("Steel Wheels");
+      //  report.addField("", "Rows");
+      //  report.addField("", "Columns");
+      //  report.addField("", "Measures");
     }
 }
