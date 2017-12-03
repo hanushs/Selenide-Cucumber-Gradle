@@ -1,12 +1,16 @@
 package utills;
 
 import com.google.common.base.Strings;
+import gherkin.lexer.Da;
 import pages.AnalysisReportPage;
+import pages.DataSourcePage;
 import pages.HomePage;
 import pages.LoginPage;
 
 import java.util.Enumeration;
 import java.util.ResourceBundle;
+
+import static com.codeborne.selenide.WebDriverRunner.addListener;
 
 /**
  * Created by pshynin on 11/16/2017.
@@ -14,6 +18,7 @@ import java.util.ResourceBundle;
 public class ApplicationManager {
     private LoginPage loginPage;
     private HomePage homePage;
+    private DataSourcePage dataSourcePage;
     private AnalysisReportPage analysisReportPage;
 
     ApplicationManager() {
@@ -30,8 +35,11 @@ public class ApplicationManager {
             System.setProperty(key, (Strings.isNullOrEmpty(System.getProperty(key)) ? value : System.getProperty(key)));
         }
 
+        addListener(new Highlighter());
+
         loginPage = new LoginPage();
         homePage = new HomePage();
+        dataSourcePage = new DataSourcePage();
         analysisReportPage = new AnalysisReportPage();
     }
 
@@ -41,6 +49,10 @@ public class ApplicationManager {
 
     public HomePage getHomePage() {
         return homePage;
+    }
+
+    public DataSourcePage getDataSourcePage() {
+        return dataSourcePage;
     }
 
     public AnalysisReportPage getAnalysisReportPage() {
@@ -53,6 +65,10 @@ public class ApplicationManager {
 
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
+    }
+
+    public void setDataSourcePage(DataSourcePage dataSourcePage) {
+        this.dataSourcePage = dataSourcePage;
     }
 
     public void setAnalysisReportPage(AnalysisReportPage analysisReportPage) {

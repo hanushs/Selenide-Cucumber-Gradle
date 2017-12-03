@@ -11,22 +11,6 @@ import static com.codeborne.selenide.Selenide.switchTo;
  */
 public class AnalysisReportPage {
 
-    private SelenideElement frame() {
-        return $(By.xpath("//iframe[@class='gwt-Frame'][@name='frame_0']"));
-    }
-
-    private SelenideElement dataSource(String source) {
-        return $(By.cssSelector("#datasources>option[title*=" + source + "]"));
-    }
-
-    private SelenideElement selectDataSourceOkButton() {
-        return $(By.id("btnNext"));
-    }
-
-    private SelenideElement selectDataSourceCancelButton() {
-        return $(By.id("btnCancel"));
-    }
-
     private SelenideElement reportTreeElement(String name) {
         return $(By.cssSelector("[id*='dojoUnique'][title='" + name + "']"));
     }
@@ -38,15 +22,9 @@ public class AnalysisReportPage {
     public AnalysisReportPage() {
     }
 
-    public void selectDataSource(String name) {
-        switchTo().defaultContent();
-        switchTo().frame(frame());
-        dataSource(name).doubleClick();
-    }
-
     public void addField(String from, String to) {
         switchTo().defaultContent();
-        switchTo().frame(frame());
+        //switchTo().frame(frame());
         //   reportTreeElement(from).dragAndDropTo(reportLayout(to));
 
         //  Selenide.switchTo().activeElement().findElement().clear();

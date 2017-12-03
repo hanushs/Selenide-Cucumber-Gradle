@@ -9,6 +9,6 @@ import tests.PUC_UITest;
  * Created by pshynin on 11/14/2017.
  */
 @RunWith(value = org.junit.runners.Suite.class)
-@SuiteClasses(value = {PUC_UITest.class})
-public class PUC_Test_Suite {
+@SuiteClasses(value = {PUC_SmokeTest.class})
+public class PUC_SmokeTest_Suite {
 }

@@ -1,13 +1,9 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.forward;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 /**
@@ -24,21 +20,30 @@ public class HomePage {
     }
 
     public SelenideElement div() {
-        return $(By.id("btnCreateNew"));
+        return $(By.id("div"));
     }
 
     private SelenideElement createNewAnalysisReportButton() {
         return $(By.cssSelector(".popover-content>#createNewanalyzerButton"));
     }
 
+    public SelenideElement page() {
+        return $(By.id("mantle-perspective-switcher"));
+    }
+
+    public SelenideElement sidebar() {
+        return $("#well sidebar");
+    }
+
     public HomePage() {
     }
 
-    public void createNew(String reportType) {
+    public DataSourcePage createNew(String reportType) {
         switchTo().frame(homeFrame());
         createNewButton().pressEnter();
         if (reportType.contains("Analysis")) {
             createNewAnalysisReportButton().click();
         }
+        return new DataSourcePage();
     }
 }

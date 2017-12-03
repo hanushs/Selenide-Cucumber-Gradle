@@ -22,10 +22,6 @@ public class LoginPage {
         return $(By.xpath("//button[contains(., 'Login')]"));
     }
 
-    private SelenideElement home() {
-        return $(By.id("mantle-perspective-switcher"));
-    }
-
     public LoginPage() {
     }
 
@@ -33,7 +29,6 @@ public class LoginPage {
         userNameField().val(username);
         passwordField().val(password);
         loginButton().click();
-        home().shouldHave(Condition.text("Home"));
         return new HomePage();
     }
 }

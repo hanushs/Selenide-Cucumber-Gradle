@@ -8,11 +8,6 @@ import utills.TestBase;
  */
 public class AnalysisReportActions extends TestBase {
 
-    @And("^select (.*) Data Source$")
-    public void selectDataSources(String dataSource) {
-        app.getAnalysisReportPage().selectDataSource(dataSource);
-    }
-
     @And("^add field (.*) to the (.*)$")
     public void addReportField(String from, String to) {
         app.getAnalysisReportPage().addField(from, to);

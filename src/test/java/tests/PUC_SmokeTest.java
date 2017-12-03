@@ -1,33 +1,59 @@
 package tests;
 
+import com.codeborne.selenide.junit.ScreenShooter;
+import com.codeborne.selenide.junit.TextReport;
+import com.google.common.base.Strings;
+import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
+import pages.AnalysisReportPage;
+import pages.DataSourcePage;
 import pages.HomePage;
 import pages.LoginPage;
-import utills.TestBase;
+import utills.Highlighter;
+
+import java.util.Enumeration;
+import java.util.ResourceBundle;
 
 import static com.codeborne.selenide.Configuration.baseUrl;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.addListener;
 
 /**
  * Created by pshynin on 12/1/2017.
  */
-public class PUC_SmokeTest extends TestBase {
+public class PUC_SmokeTest {
+
+    @Rule
+    public TestRule report = new TextReport();
+
+    @Rule
+    public ScreenShooter makeScreenshotOnFailure = ScreenShooter.failedTests().succeededTests();
+
+    @BeforeClass
+    public static void init() {
+        addListener(new Highlighter());
+
+        ResourceBundle rb = ResourceBundle.getBundle("local");
+        Enumeration<String> keys = rb.getKeys();
+
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            String value = rb.getString(key);
+            System.setProperty(key, (Strings.isNullOrEmpty(System.getProperty(key)) ? value : System.getProperty(key)));
+        }
+    }
 
 
     @Test
-    public void loginTest() {
+    public void createAnalysisReportTest() {
         LoginPage page = open(baseUrl, LoginPage.class);
         HomePage home = page.login("Admin", "password");
-        home.createNew("Analysis report");
-    }
-
-    @Test
-    public void homePerspectiveTest() {
-
-    }
-
-    @Test
-    public void createNewAnalysisReportTest() {
-
+        DataSourcePage dataSource = home.createNew("Analysis report");
+        AnalysisReportPage report = dataSource.selectDataSource("Steel Wheels");
+        report.addField("", "Rows");
+        report.addField("", "Columns");
+        report.addField("", "Measures");
     }
 }
