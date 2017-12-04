@@ -1,12 +1,10 @@
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pages.HomePage;
-import utills.TestBase;
 import pages.LoginPage;
+import utills.TestBase;
 
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.open;
@@ -31,5 +29,6 @@ public class LoginPageActions extends TestBase {
     @And("^select report$")
     public void selectReport() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+
     }
 }

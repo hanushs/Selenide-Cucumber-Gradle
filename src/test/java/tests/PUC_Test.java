@@ -1,6 +1,6 @@
 package tests;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 import pages.AnalysisReportPage;
 import pages.DataSourcePage;
 import pages.HomePage;
@@ -8,6 +8,7 @@ import pages.LoginPage;
 import utills.TestBase;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -16,6 +17,7 @@ import static com.codeborne.selenide.Selenide.open;
  */
 public class PUC_Test extends TestBase {
     private HomePage home;
+    private AnalysisReportPage report;
 
     @Test
     public void loginTest() {
@@ -28,10 +30,16 @@ public class PUC_Test extends TestBase {
                         "Documentation"));
     }
 
-    @Test
-    public void create() {
+    @Test (dependsOnMethods = "loginTest")
+    public void selectDataSource() {
         DataSourcePage dataSource = home.createNew("Analysis report");
-        AnalysisReportPage report = dataSource.selectDataSource("SteelWheels");
+        dataSource.selectDialog().shouldHave(text("Select Data Source"));
+        report = dataSource.selectDataSource("SteelWheels");
+        report.widgitLable().shouldHave(text("Analysis Report"));
+    }
+
+    @Test (dependsOnMethods = "selectDataSource")
+    public void addFields() {
         report.addField("", "Rows");
         report.addField("", "Columns");
         report.addField("", "Measures");

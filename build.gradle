@@ -35,6 +35,7 @@ repositories {
 
 dependencies {
     compile 'com.codeborne:selenide:4.8'
+    compile 'org.testng:testng:6.13.1'
     compile 'org.junit:junit5-engine:5.0.0-ALPHA'
     compile 'info.cukes:cucumber-java:1.2.5'
     compile 'info.cukes:cucumber-junit:1.2.5'

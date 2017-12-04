@@ -10,6 +10,11 @@ import static com.codeborne.selenide.Selenide.switchTo;
  * Created by pshynin on 12/3/2017.
  */
 public class DataSourcePage {
+
+    public SelenideElement selectDialog() {
+        return $("div.Caption");
+    }
+
     private SelenideElement dataSource(String source) {
         return $(By.cssSelector("#datasources>option[title*=" + source + "]"));
     }

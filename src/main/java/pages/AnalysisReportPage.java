@@ -11,6 +11,10 @@ import static com.codeborne.selenide.Selenide.switchTo;
  */
 public class AnalysisReportPage {
 
+    public SelenideElement widgitLable() {
+        return $("div.pentaho-tabWidgetLabel");
+    }
+
     private SelenideElement reportTreeElement(String name) {
         return $(By.cssSelector("[id*='dojoUnique'][title='" + name + "']"));
     }
