@@ -74,14 +74,9 @@ task runFeature(type: Test, dependsOn: test) {
     }
 }
 
-task runUITest(type: Test, dependsOn: testClasses) {
+task runTest(type: Test, dependsOn: testClasses) {
     scanForTestClasses = false
     includes = ['**/*PUC_Test_Suite.class']
-}
-
-task runSmokeTest(type: Test, dependsOn: testClasses) {
-    scanForTestClasses = true
-    includes = ['**/*PUC_SmokeTest_Suite.class']
 }
 
 tasks.withType(Test) {

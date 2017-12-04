@@ -19,7 +19,7 @@ public class HomePage {
         return $(By.id("btnCreateNew"));
     }
 
-    public SelenideElement div() {
+    private SelenideElement div() {
         return $(By.id("div"));
     }
 
@@ -31,9 +31,7 @@ public class HomePage {
         return $(By.id("mantle-perspective-switcher"));
     }
 
-    public SelenideElement sidebar() {
-        return $("#well sidebar");
-    }
+    public SelenideElement wellSidebar() { return  $("div.well sidebar"); }
 
     public HomePage() {
     }
