@@ -26,17 +26,4 @@ public class TestBase {
     @Rule
     public ScreenShooter makeScreenshotOnFailure = ScreenShooter.failedTests().succeededTests();
 
-    @BeforeClass
-    public static void init() {
-        addListener(new Highlighter());
-
-        ResourceBundle rb = ResourceBundle.getBundle("local");
-        Enumeration<String> keys = rb.getKeys();
-
-        while (keys.hasMoreElements()) {
-            String key = keys.nextElement();
-            String value = rb.getString(key);
-            System.setProperty(key, (Strings.isNullOrEmpty(System.getProperty(key)) ? value : System.getProperty(key)));
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
 import com.google.common.base.Strings;
@@ -23,7 +24,7 @@ import static com.codeborne.selenide.WebDriverRunner.addListener;
 /**
  * Created by pshynin on 12/1/2017.
  */
-public class PUC_SmokeTest {
+public class PUC_Test {
 
     @Rule
     public TestRule report = new TextReport();
@@ -45,15 +46,14 @@ public class PUC_SmokeTest {
         }
     }
 
-
     @Test
     public void createAnalysisReportTest() {
         LoginPage page = open(baseUrl, LoginPage.class);
         HomePage home = page.login("Admin", "password");
         DataSourcePage dataSource = home.createNew("Analysis report");
-      //  AnalysisReportPage report = dataSource.selectDataSource("Steel Wheels");
-      //  report.addField("", "Rows");
-      //  report.addField("", "Columns");
-      //  report.addField("", "Measures");
+        AnalysisReportPage report = dataSource.selectDataSource("SteelWheelseee");
+        report.addField("", "Rows");
+        report.addField("", "Columns");
+        report.addField("", "Measures");
     }
 }

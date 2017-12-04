@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.wrapper.Wrapper
 
@@ -25,12 +26,12 @@ repositories {
     mavenCentral()
 }
 
-configurations {
+/*configurations {
     cucumberRuntime {
         extendsFrom testCompile
         extendsFrom testRuntime
     }
-}
+}*/
 
 dependencies {
     compile 'com.codeborne:selenide:4.8'
@@ -57,18 +58,20 @@ test {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.4.1'
+    gradleVersion = '4.3.1'
     jarFile = './gradle/wrapper/gradle-wrapper.jar'
-    scriptFile = './gradle'
+    scriptFile = './gradlew'
 }
 
 task runFeature(type: Test, dependsOn: test) {
     scanForTestClasses = false
     includes = ['**suites.PUC_Feature_Suite.class']
-
-/*    include '**suites.PUC_Feature_Suite.class'
-    exclude 'tests.PUC_SmokeTest.class'
-    exclude '**//*PUC_Test_Suite.class'*/
+    test {
+        excludes = ['**suites.PUC_Test_Suite.class',
+                    '**tests.PUC_SmokeTest_Suite.class',
+                    '**tests.PUC_SmokeTest.class',
+                    '**tests.PUC_UITest.class']
+    }
 }
 
 task runUITest(type: Test, dependsOn: testClasses) {
