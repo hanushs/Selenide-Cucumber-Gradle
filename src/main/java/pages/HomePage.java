@@ -1,9 +1,11 @@
 package pages;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 /**
@@ -31,14 +33,16 @@ public class HomePage {
         return $(By.id("mantle-perspective-switcher"));
     }
 
-    public SelenideElement wellSidebar() { return  $("div.well sidebar"); }
+    public ElementsCollection buttons() {
+        switchTo().frame(homeFrame());
+        return  $$(".well.sidebar>button"); }
 
     public HomePage() {
     }
 
     public DataSourcePage createNew(String reportType) {
         switchTo().frame(homeFrame());
-        createNewButton().pressEnter();
+        createNewButton().click();
         if (reportType.contains("Analysis")) {
             createNewAnalysisReportButton().click();
         }
